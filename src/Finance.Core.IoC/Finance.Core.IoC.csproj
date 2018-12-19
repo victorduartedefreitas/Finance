@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Finance.Core.Application\Finance.Core.Application.csproj" />
     <ProjectReference Include="..\Finance.Core.Domain\Finance.Core.Domain.csproj" />
   </ItemGroup>
 
