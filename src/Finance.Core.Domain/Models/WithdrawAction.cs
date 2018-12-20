@@ -5,7 +5,7 @@ namespace Finance.Core.Domain.Models
 {
     public sealed class WithdrawAction
     {
-        public WithdrawAction(Guid customerId, Guid accountId, Amount value, string description)
+        public WithdrawAction(Guid accountId, Amount value, string description)
         {
             AccountId = accountId != default(Guid) ? accountId : throw new ArgumentNullException(nameof(accountId));
             Value = value ?? throw new ArgumentNullException(nameof(value));

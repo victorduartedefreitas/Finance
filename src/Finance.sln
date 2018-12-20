@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance.Infrastructure.IoC"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance.Core.IoC", "Finance.Core.IoC\Finance.Core.IoC.csproj", "{1B1E5078-D1AE-4332-BB81-A577CBEEDB5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finance.WebApi", "Finance.WebApi\Finance.WebApi.csproj", "{E01AE015-587C-432B-A778-9E07921906B9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,10 +51,6 @@ Global
 		{1B1E5078-D1AE-4332-BB81-A577CBEEDB5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B1E5078-D1AE-4332-BB81-A577CBEEDB5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B1E5078-D1AE-4332-BB81-A577CBEEDB5E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E01AE015-587C-432B-A778-9E07921906B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E01AE015-587C-432B-A778-9E07921906B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E01AE015-587C-432B-A778-9E07921906B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E01AE015-587C-432B-A778-9E07921906B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -68,7 +62,6 @@ Global
 		{0D17F5DC-ED2E-449C-BCCC-833733F4C9B6} = {66DA79CE-99C2-46BE-A32A-E3344D7FD9ED}
 		{00D8E6D3-58BA-4398-9C73-4D1AA9FFDEF6} = {66DA79CE-99C2-46BE-A32A-E3344D7FD9ED}
 		{1B1E5078-D1AE-4332-BB81-A577CBEEDB5E} = {82E759D9-E44D-4CE5-89E0-A8E91B2A9797}
-		{E01AE015-587C-432B-A778-9E07921906B9} = {5A68F140-E177-4590-96B6-44669D244DF0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F35805A-A73D-4896-AED1-CD0E1B43AD18}
