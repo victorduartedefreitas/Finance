@@ -4,9 +4,9 @@ A simple demo on how to implement :cloud: *Web Api* using .Net Core based on DDD
 
 ## Completed tasks:
 - [x] Domain Models
-- [ ] Domain Exceptions
-- [ ] Domain Services
-- [ ] Repositories
+- [x] Domain Exceptions
+- [x] Domain Services
+- [x] Repositories
 - [x] Core.IoC
 - [ ] Application Tests
 - [x] Infrastructure.IoC
