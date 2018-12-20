@@ -8,6 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<ICustomerService, CustomerService>();
 
             return services;
         }
