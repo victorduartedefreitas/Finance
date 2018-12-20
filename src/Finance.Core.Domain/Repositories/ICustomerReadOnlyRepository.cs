@@ -6,6 +6,6 @@ namespace Finance.Core.Domain.Repositories
 {
     public interface ICustomerReadOnlyRepository
     {
-        Task<Customer> GetCustomer(Guid customerId);
+        Task<OperationResult<Customer>> GetCustomer(Guid customerId);
     }
 }

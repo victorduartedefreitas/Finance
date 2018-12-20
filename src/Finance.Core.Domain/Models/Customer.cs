@@ -3,7 +3,7 @@ using System;
 
 namespace Finance.Core.Domain.Models
 {
-    public sealed class Customer : IEntity
+    public sealed class Customer : IEntity, ICopiableEntity<Customer>
     {
         #region Constructors
 
@@ -47,6 +47,11 @@ namespace Finance.Core.Domain.Models
                 customer.AddAccount(acc);
 
             return customer;
+        }
+
+        public void CopyFrom(Customer original)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

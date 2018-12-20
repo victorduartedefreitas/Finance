@@ -44,13 +44,17 @@ namespace Finance.Core.Application.Services
 
         public async Task Deposit(DepositAction deposit)
         {
-            var account = await _accountReadOnlyRepository.GetAccount(deposit.AccountId);
+            var result = await _accountReadOnlyRepository.GetAccount(deposit.AccountId);
+            if (!result.Success)
+                throw new DepositActionException(result.Exception.Message, result.Exception);
+
+            Account account = result.ResultObject;
             if (account == null)
                 throw new AccountNotFoundException($"The account {deposit.AccountId} does not exists.");
 
             account.Deposit(deposit.Value, deposit.Description);
             ITransaction depositTransaction = account.Transactions.GetLastTransactionClone();
-            OperationResult result = await _accountWriteOnlyRepository.InsertTransaction(deposit.AccountId, depositTransaction);
+            OperationResult insertResult = await _accountWriteOnlyRepository.InsertTransaction(deposit.AccountId, depositTransaction);
 
             if (!result.Success)
                 throw new DepositActionException(result.Message);
@@ -61,7 +65,11 @@ namespace Finance.Core.Application.Services
             if (accountId == default(Guid))
                 throw new ArgumentNullException(nameof(accountId));
 
-            var account = await _accountReadOnlyRepository.GetAccount(accountId);
+            var result = await _accountReadOnlyRepository.GetAccount(accountId);
+            if (!result.Success)
+                throw new GetAccountActionException(result.Exception.Message, result.Exception);
+
+            var account = result.ResultObject;
             if (account == null)
                 throw new AccountNotFoundException($"The account {accountId} does not exists.");
 
@@ -73,7 +81,11 @@ namespace Finance.Core.Application.Services
             if (customerId == default(Guid))
                 throw new ArgumentNullException(nameof(customerId));
 
-            var accounts = await _accountReadOnlyRepository.GetAccountsByCustomerId(customerId);
+            var result = await _accountReadOnlyRepository.GetAccountsByCustomerId(customerId);
+            if (!result.Success)
+                throw new GetAccountActionException(result.Exception.Message, result.Exception);
+
+            var accounts = result.ResultObject;
 
             if (accounts == null || accounts.Count == 0)
                 throw new AccountNotFoundException($"The customer {customerId} has no active accounts.");
@@ -86,7 +98,11 @@ namespace Finance.Core.Application.Services
             if (accountId == default(Guid))
                 throw new ArgumentNullException(nameof(accountId));
 
-            var account = await _accountReadOnlyRepository.GetAccount(accountId);
+            var result = await _accountReadOnlyRepository.GetAccount(accountId);
+            if (!result.Success)
+                throw new DomainException(result.Exception.Message, result.Exception);
+
+            var account = result.ResultObject;
             if (account == null)
                 throw new AccountNotFoundException($"The account {accountId} does not exists.");
 
@@ -95,16 +111,20 @@ namespace Finance.Core.Application.Services
 
         public async Task Withdraw(WithdrawAction withdraw)
         {
-            var account = await _accountReadOnlyRepository.GetAccount(withdraw.AccountId);
+            var result = await _accountReadOnlyRepository.GetAccount(withdraw.AccountId);
+            if (!result.Success)
+                throw new WithdrawActionException(result.Exception.Message, result.Exception);
+
+            var account = result.ResultObject;
             if (account == null)
                 throw new AccountNotFoundException($"The account {withdraw.AccountId} does not exists.");
 
             account.Withdraw(withdraw.Value, withdraw.Description);
             ITransaction withdrawTransaction = account.Transactions.GetLastTransactionClone();
-            OperationResult result = await _accountWriteOnlyRepository.InsertTransaction(withdraw.AccountId, withdrawTransaction);
+            OperationResult withdrawResult = await _accountWriteOnlyRepository.InsertTransaction(withdraw.AccountId, withdrawTransaction);
 
-            if (!result.Success)
-                throw new WithdrawActionException(result.Message);
+            if (!withdrawResult.Success)
+                throw new WithdrawActionException(withdrawResult.Message);
         }
 
         #endregion

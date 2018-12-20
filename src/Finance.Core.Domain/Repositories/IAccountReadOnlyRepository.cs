@@ -7,8 +7,8 @@ namespace Finance.Core.Domain.Repositories
 {
     public interface IAccountReadOnlyRepository
     {
-        Task<Account> GetAccount(Guid id);
-        Task<IList<Account>> GetAccountsByCustomerId(Guid customerId);
-        Task<ITransaction> GetLastTransaction(Guid accountId);
+        Task<OperationResult<Account>> GetAccount(Guid id);
+        Task<OperationResult<IList<Account>>> GetAccountsByCustomerId(Guid customerId);
+        Task<OperationResult<ITransaction>> GetLastTransaction(Guid accountId);
     }
 }
