@@ -5,11 +5,11 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class ApplicationExtensionsServicesCollection
     {
-        public static IServiceCollection AddRepositories(this IServiceCollection serviceCollection)
+        public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            serviceCollection.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IAccountService, AccountService>();
 
-            return serviceCollection;
+            return services;
         }
     }
 }
